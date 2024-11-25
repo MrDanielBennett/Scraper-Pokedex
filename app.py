@@ -1,6 +1,7 @@
 from selenium import webdriver
 import time
 from selenium.webdriver.common.by import By
+import config
 
     ## Sumarize using chat GPT
     ## Write Sumarized Dex Desc to Json File
@@ -19,7 +20,9 @@ ruby_element = ''
 emerald_element = ''
 firered_element = ''
 base_image_url = "https://www.serebii.net/emerald/pokemon/"
+api_key = config.gpt_api_key
 
+print(api_key)
 
 for i in range(1, num_pages + 1):
     url=f"{base_url}" + "00" + f"{i}" + ".shtml"
