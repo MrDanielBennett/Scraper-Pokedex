@@ -20,6 +20,7 @@ ruby_element = ''
 emerald_element = ''
 firered_element = ''
 base_image_url = "https://www.serebii.net/emerald/pokemon/"
+poke_id = ""
 api_key = config.gpt_api_key
 
 print(api_key)
@@ -30,6 +31,10 @@ for i in range(1, num_pages + 1):
     driver.get(url)
 
     time.sleep(3)
+
+    ##Pokemon ID
+    poke_id = "00" + f"{i}"
+    print(poke_id)
 
     ## Description grab
     ruby_element = driver.find_element(By.XPATH, "//table//td[@class='ruby']")
@@ -50,6 +55,8 @@ for i in range(1, num_pages + 1):
     ##image url grab
     image_url = f"{base_image_url}" + "00" + f"{i}" + ".png"
     print("This is the image link" + image_url)
+
+
 
     ##Summarize Descriptions using ChatGPT
     description_for_gpt = "Summarize these Descriptions as a Pokedex entry: " + ruby_entry_text + emerald_entry_text + firered_entry_text
